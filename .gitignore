@@ -7,7 +7,8 @@ target/
 .idea/
 *.iml
 
-# Environment
+# Environment files
+.env
 *.env
 application-dev.properties
 
