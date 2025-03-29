@@ -8,9 +8,7 @@ target/
 *.iml
 
 # Environment files
-.env
-*.env
-application-dev.properties
+application-local.properties
 
 # System
 .DS_Store
