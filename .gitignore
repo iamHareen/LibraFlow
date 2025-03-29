@@ -12,3 +12,6 @@ application-local.properties
 
 # System
 .DS_Store
+
+# Explicitly keep these files
+HELP.md
