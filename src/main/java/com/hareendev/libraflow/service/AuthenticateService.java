@@ -3,6 +3,7 @@ package com.hareendev.libraflow.service;
 import com.hareendev.libraflow.dto.LoginRequestDTO;
 import com.hareendev.libraflow.dto.LoginResponseDTO;
 import com.hareendev.libraflow.dto.RegisterRequestDTO;
+import com.hareendev.libraflow.jwt.JWTService;
 import com.hareendev.libraflow.model.User;
 import com.hareendev.libraflow.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,9 +82,10 @@ public class AuthenticateService {
                 .orElseThrow(()-> new RuntimeException("User Not Found"));
 
         String token = jwtService.generateToken();
+
         return LoginResponseDTO.builder()
                 .token(token)
-                .username(user.getUserName())
+                .username(user.getUsername())
                 .roles(user.getRoles())
                 .build();
 
