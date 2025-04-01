@@ -83,11 +83,7 @@ public class AuthenticateService {
 
         String token = jwtService.generateToken(user);
 
-        return LoginResponseDTO.builder()
-                .token(token)
-                .username(user.getUsername())
-                .roles(user.getRoles())
-                .build();
+        return LoginResponseDTO.builder().token(token).username(user.getUsername()).roles(user.getRoles()).build();
 
     }
 
