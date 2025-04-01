@@ -8,5 +8,5 @@ public class BookDTO {
     private String author;
     private String isbn;
     private Integer quantity;
-    private boolean isAvailable;
+    private boolean available;
 }

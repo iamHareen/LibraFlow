@@ -34,7 +34,7 @@ public class AuthenticateService {
 
     public User registerNormalUser(@RequestBody RegisterRequestDTO registerRequestDTO) {
 
-        if(userRepository.findByUserName(registerRequestDTO.getUserName()).isPresent()) {
+        if(userRepository.findByUsername(registerRequestDTO.getUsername()).isPresent()) {
             throw new RuntimeException("User Already Registered");
         }
 
@@ -42,7 +42,7 @@ public class AuthenticateService {
         roles.add("ROLE_USER");
 
         User user = new User();
-        user.setUserName(registerRequestDTO.getUserName());
+        user.setUsername(registerRequestDTO.getUsername());
         user.setEmail(registerRequestDTO.getEmail());
         user.setPassword(passwordEncoder.encode(registerRequestDTO.getPassword()));
         user.setRoles(roles);
@@ -53,7 +53,7 @@ public class AuthenticateService {
 
     public User registerAdminUser(@RequestBody RegisterRequestDTO registerRequestDTO) {
 
-        if(userRepository.findByUserName(registerRequestDTO.getUserName()).isPresent()) {
+        if(userRepository.findByUsername(registerRequestDTO.getUsername()).isPresent()) {
             throw new RuntimeException("User Already Registered");
         }
 
@@ -62,7 +62,7 @@ public class AuthenticateService {
         roles.add("ROLE_USER");
 
         User user = new User();
-        user.setUserName(registerRequestDTO.getUserName());
+        user.setUsername(registerRequestDTO.getUsername());
         user.setEmail(registerRequestDTO.getEmail());
         user.setPassword(passwordEncoder.encode(registerRequestDTO.getPassword()));
         user.setRoles(roles);
@@ -74,11 +74,11 @@ public class AuthenticateService {
     public LoginResponseDTO login(@RequestBody LoginRequestDTO loginRequestDTO) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        loginRequestDTO.getUserName(),
+                        loginRequestDTO.getUsername(),
                         loginRequestDTO.getPassword())
         );
 
-        User user = userRepository.findByUserName(loginRequestDTO.getUserName())
+        User user = userRepository.findByUsername(loginRequestDTO.getUsername())
                 .orElseThrow(()-> new RuntimeException("User Not Found"));
 
         String token = jwtService.generateToken(user);

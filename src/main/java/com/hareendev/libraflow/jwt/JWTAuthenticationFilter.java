@@ -51,7 +51,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         if(username != null || SecurityContextHolder.getContext().getAuthentication() == null) {
 
             // Get user details from database
-            var userDetails = userRepository.findByUserName(username)
+            var userDetails = userRepository.findByUsername(username)
                     .orElseThrow(()-> new RuntimeException("User not found"));
 
             // Validate the token

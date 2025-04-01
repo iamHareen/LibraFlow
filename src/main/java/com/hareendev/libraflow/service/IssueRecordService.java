@@ -6,6 +6,7 @@ import com.hareendev.libraflow.model.User;
 import com.hareendev.libraflow.repository.BookRepository;
 import com.hareendev.libraflow.repository.IssueRecordRepository;
 import com.hareendev.libraflow.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.security.Security;
 import java.time.LocalDate;
 
+@Slf4j
 @Service
 public class IssueRecordService {
 
@@ -26,6 +28,7 @@ public class IssueRecordService {
     private UserRepository userRepository;
 
     public IssueRecord issueTheBook(Long bookId) {
+        log.info("****************************************************\nbookID: {}", bookId);
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(()->new RuntimeException("Book not found"));
 
@@ -34,7 +37,7 @@ public class IssueRecordService {
         }
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userRepository.findByUserName(username)
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(()-> new RuntimeException("User not found"));
 
         IssueRecord issueRecord = new IssueRecord();
@@ -54,7 +57,7 @@ public class IssueRecordService {
 
     public IssueRecord returnTheBook(Long issueRecordId) {
         IssueRecord issueRecord = issueRecordRepository.findById(issueRecordId)
-                .orElseThrow(()-> new RuntimeException("Issure Record Not Found"));
+                .orElseThrow(()-> new RuntimeException("Issue Record Not Found"));
 
         if(issueRecord.isReturned()) {
             throw new RuntimeException("Book is already returned");
