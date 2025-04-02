@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.security.Security;
 import java.time.LocalDate;
 
 @Slf4j
@@ -28,7 +27,6 @@ public class IssueRecordService {
     private UserRepository userRepository;
 
     public IssueRecord issueTheBook(Long bookId) {
-        log.info("****************************************************\nbookID: {}", bookId);
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(()->new RuntimeException("Book not found"));
 
