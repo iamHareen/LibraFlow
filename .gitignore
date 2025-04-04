@@ -1,18 +1,20 @@
-# IDE
+# IDE files
 .idea/
 *.iml
 
-# Maven
+# Maven build files
 target/
 *.jar
 *.war
-#src/test/
 
-# Explicitly keep these files
-HELP.md
+# Test files (optional - only include if you want to ignore all test files)
+src/test/
 
-# Environment files
+# Environment config files (ignored for security)
 application-local.properties
 
-# System
+# System files
 .DS_Store
+
+# Help file
+HELP.md
