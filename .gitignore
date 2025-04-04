@@ -1,0 +1,18 @@
+# IDE
+.idea/
+*.iml
+
+# Maven
+target/
+*.jar
+*.war
+#src/test/
+
+# Explicitly keep these files
+HELP.md
+
+# Environment files
+application-local.properties
+
+# System
+.DS_Store
