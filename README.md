@@ -37,7 +37,7 @@ cd LibraFlow
 ```
 
 ### 2. Configure the database
-- Create a MySQL database.
+- Create a application-local.properties file.
 - Update database credentials in application-local.properties:
 ```bash
 spring.datasource.url=jdbc:mysql://localhost:3306/[database_name]?createDatabaseIfNotExist=true
