@@ -34,3 +34,25 @@ LibraFlow is a modern library management system built with Java Spring Boot, des
 ```bash
 git clone https://github.com/iamHareen/LibraFlow.git
 cd LibraFlow
+```
+
+### 2. Configure the database
+- Create a MySQL database.
+- Update database credentials in application-local.properties:
+```bash
+spring.datasource.url=jdbc:mysql://localhost:3306/[database_name]?createDatabaseIfNotExist=true
+spring.datasource.username=[username]
+spring.datasource.password=[password]
+```
+
+### 3. Build and run the project
+```bash
+mvn clean install
+mvn spring-boot:run
+```
+
+### 4. Access the application
+- The application will start on http://localhost:8080/
+
+
+
